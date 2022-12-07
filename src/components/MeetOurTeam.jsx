@@ -209,7 +209,7 @@ const Con = styled.div`
            
 
     }
-  }
+  }}
 `;
 
 export default MeetOurTeam;
