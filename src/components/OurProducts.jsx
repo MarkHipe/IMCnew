@@ -152,7 +152,7 @@ const Con = styled.div`
 
       justify-content: center;
       align-items: center;
-      & .productPrevCon {
+      & .productPrevCon { 
         width: 40%;
         height: 540px;
         display: flex;
