@@ -8,13 +8,13 @@ import OurServices from "./components/OurServices";
 import img8 from "./assets/image8.png";
 import OurProducts from "./components/OurProducts";
 import MeetOurTeam from "./components/MeetOurTeam";
+import ContactUs from "./components/ContactUs";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <Router>
       <Con className="App">
-        {" "}
         <div className="backgroundImg">
           <img
             src="https://images.squarespace-cdn.com/content/v1/57ad8de5ff7c50d12ce76b68/1565000509464-XBVYERJXN1LQ851EHYS9/Engage-Architectural-22.jpg?format=1000w"
@@ -34,16 +34,18 @@ function App() {
           <div className="imgBanner">
             <img src={img8} alt="" />
             <div className="button">
-              {" "}
               <button>Contact Us</button>
             </div>
           </div>
         </div>
         <div className="OurProducts">
           <OurProducts />
-        </div>{" "}
+        </div>
         <div className="MeetOurTeam">
           <MeetOurTeam />
+        </div>
+        <div className="ContactUs">
+          <ContactUs />
         </div>
       </Con>
     </Router>
@@ -101,6 +103,7 @@ const Con = styled.div`
         position: absolute;
         height: 300px;
         object-fit: cover;
+       
       }
       & button {
         background: rgba(90, 185, 117, 0.4);

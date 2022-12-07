@@ -75,6 +75,7 @@ const Con = styled.div`
 
   width: 100%;
   height: 100%;
+  margin-bottom: 2rem;
   & .heading {
     font-weight: 600;
     font-size: 20px;

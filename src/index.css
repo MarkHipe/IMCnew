@@ -7,6 +7,9 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
-  max-width: 1800px;
+ 
   margin: auto;
+}
+html{
+  width: 100%; max-width: 1800px;
 }
