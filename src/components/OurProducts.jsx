@@ -207,7 +207,7 @@ const Con = styled.div`
               margin-left: 10px;
             }
           }
-        }
+        } 
       }
 
       & .prodSlider {
