@@ -87,10 +87,9 @@ const MainContents = ({ actives }) => {
                 Contact Us
               </button>
               <span>
-              <IoCall className="icon" /> +63 2 247 2854
-            </span>
+                <IoCall className="icon" /> +63 2 247 2854
+              </span>
             </div>
-           
           </div>
         </div>
         <span className="sns">
@@ -141,7 +140,7 @@ const MainContents = ({ actives }) => {
                       overflow: "hidden",
                       objectFit: "cover",
                       filter:
-                        active === index ? "brightness(1)" : "brightness(0.50)",
+                        active === index ? "brightness(1)" : "brightness(0.90)",
                     }}
                   />
                 </SwiperSlide>
@@ -162,10 +161,10 @@ const Con = styled.div`
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    & .icon{
-      margin: .5rem 1.5rem;
+    & .icon {
+      margin: 0.5rem 1.5rem;
     }
-    & .line{
+    & .line {
       height: 3rem;
       width: 1px;
       background-color: #d7d7d7;
@@ -207,7 +206,6 @@ const Con = styled.div`
           margin-top: 3rem;
         }
         & span {
-
           font-size: 25px;
           margin-top: 8rem;
           white-space: nowrap;
