@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-
+import emp1 from "../assets/emp1.png";
+import emp2 from "../assets/emp2.png";
+import emp3 from "../assets/emp3.png";
+import emp4 from "../assets/emp4.png";
+import emp5 from "../assets/emp5.png";
+import emp6 from "../assets/emp6.png";
 const MeetOurTeam = () => {
   return (
     <Con>
@@ -9,59 +14,72 @@ const MeetOurTeam = () => {
         <span className="text1">MEET OUR TEAM</span>
         <span className="text2">MEET OUR TEAM</span>
       </div>
-
+      <div className="circle"></div>
+      <div className="line one"></div>
+      <div className="line two"></div>
+      <div className="line three"></div>
+      <div className="line four"></div>
+      <div className="line five"></div>
       <div className="contents">
-        <div className="teamCardWrap">
-          <div className="card">
-            <div className="imageWrap">
-              <div className="shadow1">
-                <div className="shadow2">
-                  <div className="img"></div>
-                </div>
+        <div className="wrapper">
+          <div className="left">
+            <div className="profWrap one">
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
               </div>
-            </div>
-            <div className="details">
-              <h1>JUAN DELA CRUZ</h1>
-              <h2>C.E.O</h2>
-            </div>
-          </div>{" "}
-          <div className="card">
-            <div className="imageWrap">
-              <div className="shadow1">
-                <div className="shadow2">
-                  <div className="img"></div>
-                </div>
+              <div className="circle2">
+                <img src={emp1} alt="" />
               </div>
-            </div>
-            <div className="details">
-              <h1>JUAN DELA CRUZ</h1>
-              <h2>C.E.O</h2>
-            </div>
-          </div>{" "}
-          <div className="card">
-            <div className="imageWrap">
-              <div className="shadow1">
-                <div className="shadow2">
-                  <div className="img"></div>
-                </div>
+            </div>{" "}
+            <div className="profWrap one">
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
               </div>
-            </div>
-            <div className="details">
-              <h1>JUAN DELA CRUZ</h1>
-              <h2>C.E.O</h2>
+              <div className="circle2">
+                <img src={emp3} alt="" />
+              </div>
+            </div>{" "}
+            <div className="profWrap one">
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
+              </div>
+              <div className="circle2">
+                <img src={emp5} alt="" />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="messageCon">
-          <div className="content">
-            <h1>We Build a Great TEAM</h1>
-            <p>
-              With the use of wide distribution network and effective marketing
-              schemes, we - 8MGM Trading Inc. With the use of wide distribution
-              network and effective marketing schemes, we - 8MGM Trading Inc.,
-              has managed to grow continually since the day the business was
-              established.
-            </p>
+          <div className="right">
+            {" "}
+            <div className="profWrap two">
+              <div className="circle2">
+                <img src={emp2} alt="" />
+              </div>{" "}
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
+              </div>
+            </div>{" "}
+            <div className="profWrap two">
+              <div className="circle2">
+                <img src={emp4} alt="" />
+              </div>{" "}
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
+              </div>
+            </div>{" "}
+            <div className="profWrap two">
+              <div className="circle2">
+                <img src={emp6} alt="" />
+              </div>{" "}
+              <div className="details">
+                <h1>JUAN DELA CRUZ</h1>
+                <h4>C.E.O</h4>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,9 +90,10 @@ const MeetOurTeam = () => {
 const Con = styled.div`
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 1400px;
   margin-bottom: 2rem;
   & .heading {
     font-weight: 600;
@@ -107,110 +126,117 @@ const Con = styled.div`
       }
     }
   }
+  & .circle {
+    background: rgba(228, 255, 236, 0.6);
+    height: 1000px;
+    width: 1000px;
+    margin: auto;
+    position: absolute;
+    border-radius: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  //  align-items: center;
+ 
+  }
+  & .line{
+    outline:3px dashed #24753B;
+    //background-color: #24753B;
+    height: 0px;
+    width: 40vw;
+    margin: 1rem;
+    position: absolute;
+    z-index: 2;
+    &.one{
+      transform: rotate(8deg);
+      margin-top: -500px;
+    }  
+    &.two{
+      transform: rotate(-16deg);
+      margin-top: -100px;
+    } 
+     &.three{
+      transform: rotate(8deg);
+      margin-top: 12rem;
+    } 
+     &.four{
+      transform: rotate(-16deg);
+      margin-top: 600px;
+    } 
+     &.five{
+      transform: rotate(8deg);
+      margin-top:1000px;
+    }
+  }
   & .contents {
     display: flex;
     width: 80%;
     height: 100%;
     padding: 20px;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     margin: auto;
-    & .teamCardWrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    
-      & .card {
+    margin-top: 0rem;
+
+    & .wrapper {
+      position: relative;
+      z-index: 2;
+      display: block;
+      // margin-left: -80%;
+      margin-top: 5rem;
+      display: inline-flex;
+      width: 100%;
+      & .left {
+        width: 50%;
         display: flex;
         flex-direction: column;
-        width: 200px;
-        height: 250px;
-        background: #fff;
-        border-radius: 20px;
-        border: 1px solid #eee;
-        box-sizing: border-box;
-        margin: auto 13px;
-        & .imageWrap {
-          height: 60%;
-          & .shadow1 {
-            background: rgba(124, 191, 255, 0.2);
-            border-radius: 100%;
-            height: 150px;
-            width: 150px;
-            margin: 13px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3px;
-            & .shadow2 {
-              background: rgba(0, 92, 180, 0.4);
-              border-radius: 100%;
-              height: 140px;
-              width: 140px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              padding: 3px;
-              & .img {
-                background: #005cb4;
-                border-radius: 100%;
-                height: 130px;
-                width: 130px;
-              }
-            }
-          }
+      }
+      & .right {
+        width: 50%;
+        flex-direction: column;
+        margin-top: 80px;
+      }
+      & .profWrap {
+        position: relative;
+        height: 320px;
+        margin:  1rem;
+        & h1 {
+          font-size: 20px;
         }
-        & .details {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          flex: 10px;
-          margin: 15px auto;
-          & h1 {
-            font-size: 16px;
-            font-weight: bold;
-            margin: 10px auto;
-          }
-          & h2 {
-            font-size: 13px;
-            font-weight: bold;
-            margin: 10px auto;
-            margin-top: -0.8rem;
-            color: #333;
-          }
+        & h4 {
+          font-size: 16px;
+          text-align: center;
+          margin-top: -1rem;
+          color: #585858;
+        }
+        & .circle2 {
+          height: 200px;
+          width: 200px;
+          background-color: #005cb4;
+          border-radius: 100%;
+        }
+        display: inline-flex;
+        & img {
+          height: 300px;
+          object-fit: cover;
+          border-radius: 200px;
+          position: relative;
+          margin-top: -100px;
+          margin-left: 10px;
+          left: 0;
+        }
+        &.one {
+          position: relative;
+          top: 0;
+          left:10%;
+        }
+        &.two {
+          left: 30%;
         }
       }
     }
-    & .messageCon {
-        & .content{
-            width: 240px;
-            height: 300px;
-            margin: auto;
-            padding: 1.2rem;
-            border-radius: 20px;
-            background: #005CB4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            & h1{
-                font-size: 20px;
-                font-weight: 600;
-                margin: 1rem auto;
-                color: #ffffff;
-            }
-            & p{
-                font-size: 13px;
-                font-weight: 400;
-                margin: 1.5rem auto;
-                color: #ffffff;
-                line-height: 20px;
-            }
-           
-
-    }
-  }}
+  }
 `;
 
 export default MeetOurTeam;

@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import image3 from "../assets/image3.png";
 import image4 from "../assets/image4.png";
+import { useIsInViewport } from "../utils/UseInView";
 const AboutUs = () => {
+  const [hovered, sethovered] = useState(false);
+  const intro = useRef(null);
+  const mission = useRef(null);
+  const mission2 = useRef(null);
+  const introView = useIsInViewport(intro);
+  console.log(introView);
+  const missionView = useIsInViewport(mission);
+  const missionView2 = useIsInViewport(mission2);
+
   return (
     <Con>
       <div className="wrap">
-        <div className="about">
+        <div
+          className={introView === true ? " about visible " : "about"}
+          ref={intro}
+        >
           <span>
             <h1>ABOUT US</h1>
           </span>
@@ -22,18 +35,77 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-        <div className="mission">
+        <div className={missionView === true ? " mission visible " : "mission"}>
+          <div
+            className={
+              missionView === true ? " circle one visible " : "circle one"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle two visible " : "circle two"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle three visible " : "circle three"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle four visible " : "circle four"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle five visible " : "circle five"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle six visible " : "circle six"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle seven visible " : "circle seven"
+            }
+          ></div>
+          <div
+            className={
+              missionView === true ? " circle eight visible " : "circle eight"
+            }
+          ></div>
+
           <div className="img">
-            <img src={image3} alt="" />
+            <img
+              src={image3}
+              className={missionView === true ? "  visible " : ""}
+              alt=""
+            />
           </div>
-          <div className="text">
+          <div className="text" ref={mission}>
             <div className="head">
-              <h1>OUR MISSION</h1>
-              <span>
+              <h1
+                className={
+                  hovered === true || missionView === true ? "animate" : ""
+                }
+              >
+                OUR MISSION
+              </h1>
+              <span
+                className={
+                  hovered === true || missionView === true ? "animate" : ""
+                }
+              >
                 <h1>OUR MISSION</h1>
               </span>
             </div>
-            <p>
+            <p
+              onMouseOver={() => {
+                sethovered(!hovered);
+              }}
+            >
               Guided by our mission to relentlessly deliver the best possible
               product, service, quality and value to our customers, 8MGM Trading
               Inc. had formed an impeccable amount of positive feed backs from
@@ -42,8 +114,8 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-        <div className="missionp2">
-          <div className="text">
+        <div className="missionp2" ref={mission2}>
+          <div className={missionView2 === true ? "text  visible " : "text"}>
             <p>
               With the use of wide distribution network and effective marketing
               schemes, we - 8MGM Trading Inc., has managed to grow continually
@@ -52,7 +124,11 @@ const AboutUs = () => {
           </div>
           <div className="img">
             {" "}
-            <img src={image4} alt="" />
+            <img
+              className={missionView2 === true ? "  visible " : ""}
+              src={image4}
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -62,20 +138,36 @@ const AboutUs = () => {
 const Con = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 95%;
-  margin: auto;
+  width: 100%;
+  margin: 3rem auto;
   height: 100%;
-  padding: 1rem;
+  // padding: 1rem;
   & .wrap {
-    width: 80%;
+    width: 100%;
     & .about {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      // align-items: center;
+      //justify-content: center;
       width: 100%;
       height: 100%;
+      &.visible {
+        -webkit-animation: slide-in-left 0.5s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @keyframes slide-in-left {
+          0% {
+            -webkit-transform: translateX(-1000px);
+            transform: translateX(1000px);
+            opacity: 0;
+          }
+          100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      }
       & span {
         width: 100%;
         display: flex;
@@ -90,16 +182,20 @@ const Con = styled.div`
       & .text {
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 2rem;
+        justify-content: flex-end;
+        // margin: 2rem;
         & p {
-          width: 90%;
+          position: relative;
+          right: 0;
+          width: 85%;
           font-size: 15px;
-          background-color: #e1f0ff;
-          padding: 1rem;
-          color: #363636;
-          font-weight: 500;
+          line-height: 30px;
+          background-color: #005cb4;
+          padding: 3rem 4rem;
+          color: #eaeaea;
+          font-weight: 400;
+          border-top-left-radius: 100px;
+          border-bottom-left-radius: 100px;
         }
       }
     }
@@ -109,20 +205,118 @@ const Con = styled.div`
       justify-content: center;
       width: 100%;
       height: 100%;
+
+      & .circle {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        background-color: #24753baa;
+        position: absolute;
+
+        &.visible {
+          -webkit-animation: blink 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            both;
+          animation: blink 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          @keyframes blink {
+            0% {
+              opacity: 0;
+            }
+            25% {
+              -webkit-transform: translateX(-30px);
+              transform: translateX(30px);
+              opacity: 0.5;
+            }
+
+            100% {
+              -webkit-transform: translateX(0);
+              transform: translateX(0);
+              opacity: 1;
+            }
+          }
+        }
+        &.one {
+          height: 10px;
+          width: 10px;
+          margin-top: -8rem;
+          margin-left: 15rem;
+        }
+        &.two {
+          height: 24px;
+          width: 24px;
+          margin-top: -10rem;
+          margin-left: 10rem;
+        }
+        &.three {
+          height: 16px;
+          width: 16px;
+          margin-top: 20rem;
+          margin-left: -11rem;
+        }
+        &.four {
+          height: 28px;
+          width: 28px;
+          margin-top: 29rem;
+          margin-left: -16rem;
+          background-color: #005db48b;
+        }
+        &.five {
+          height: 10px;
+          width: 10px;
+          margin-top: 25rem;
+          margin-left: -17rem;
+        }
+        &.six {
+          height: 8px;
+          width: 8px;
+          margin-top: 50rem;
+          margin-left: -80%;
+        }
+        &.seven {
+          height: 26px;
+          width: 26px;
+          margin-top: 40rem;
+          margin-left: -95%;
+        }
+        &.eight {
+          height: 18px;
+          width: 18px;
+          margin-top: 44rem;
+          margin-left: -80%;
+          background-color: #005db48b;
+        }
+      }
       & .img {
-        margin: auto;
+        margin: auto 3rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 150%;
-        height: 100%;
+
         & img {
-          height: 300px;
-          width: 500px;
+          height: 600px;
+          width: 600px;
+          border-radius: 100%;
+          opacity: 0;
+          &.visible {
+            animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+              both;
+            @keyframes slide-in-right {
+              0% {
+                transform: scale(0.9);
+
+                opacity: 0;
+              }
+              50% {
+                transform: scale(0.85);
+                opacity: 0.5;
+              }
+              100% {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+          }
         }
       }
       & .text {
-        width: 100%;
+        width: 80%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -133,40 +327,81 @@ const Con = styled.div`
           font-size: 3rem;
           font-weight: 700;
           margin-bottom: 1rem;
+          &.animate {
+            animation: slide-text-right 0.5s
+              cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            @keyframes slide-text-right {
+              0% {
+                transform: translateX(0px);
+              }
+              50% {
+                transform: translateX(-20px);
+              }
+              100% {
+                transform: translateX(0px);
+              }
+            }
+          }
         }
         & p {
-          width: 100%;
+          width: 400px;
           font-size: 15px;
           //background-color: #e1f0ff;
           padding: 1rem;
-          color: #363636;
+          color: #525252;
           font-weight: 500;
+          line-height: 30px;
+
         }
         & span {
           position: absolute;
           color: #a7a7a73c;
           margin-top: -7.5rem;
           margin-left: -2rem;
+          &.animate {
+            animation: slide-text-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+              both;
+            @keyframes slide-text-left {
+              0% {
+                transform: translateX(0px);
+              }
+              50% {
+                transform: translateX(20px);
+              }
+              100% {
+                transform: translateX(0px);
+              }
+            }
+          }
         }
       }
     }
     & .missionp2 {
       display: flex;
-      align-items: center;
-      justify-content: center;
       width: 100%;
       height: 100%;
       & .img {
-        margin: auto;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-end;
         width: 100%;
         height: 100%;
         & img {
-          height: 300px;
-          width: 400px;
-          margin-right: 4rem;
+          height: 400px;
+          width: 600px;
+          border-top-left-radius: 200px;
+          border-bottom-left-radius: 200px;
+          &.visible {
+            animation: shine 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            @keyframes shine {
+              0% {
+                //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
+              }
+
+              100% {
+                filter: drop-shadow(0px 20px 60px rgba(3, 122, 234, 0.5));
+              }
+            }
+          }
         }
       }
       & .text {
@@ -176,12 +411,27 @@ const Con = styled.div`
         align-items: center;
         margin: 3rem;
         flex-direction: column;
+        opacity: 0;
+        &.visible {
+          animation: visible-text 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          @keyframes visible-text {
+            0% {
+              //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
+              opacity: 0.3;
+            }
+
+            100% {
+              opacity: 1;
+            }
+          }
+        }
         & p {
-          width: 80%;
+          width: 400px;
           font-size: 15px;
-          background-color: #e1f0ff;
+          line-height: 30px;
+
           padding: 1rem;
-          color: #363636;
+          color: #24753b;
           font-weight: 500;
           margin: auto;
         }

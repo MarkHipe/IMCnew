@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  IoCall,
+  IoLogoInstagram,
+  IoLogoLinkedin,
+  IoLogoFacebook,
+} from "react-icons/io5";
+
+import { CiLocationOn, CiMail } from "react-icons/ci";
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -12,7 +20,9 @@ import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
+
 const member = [
   {
     id: 0,
@@ -45,7 +55,8 @@ const member = [
       "http://images.summitmedia-digital.com/preview/images/2021/03/05/most-expensive-skincare-nm.jpg",
   },
 ];
-const MainContents = () => {
+
+const MainContents = ({ actives }) => {
   const [active, setactive] = useState(0);
   return (
     <Con>
@@ -55,16 +66,43 @@ const MainContents = () => {
             <h2>Need It?</h2>
             <h1>WE HAVE IT.</h1>
             <p>
-              WE supplY different products And equipment for schools, hospitals,
+              We supply different products And equipment for schools, hospitals,
               offices, casinos
             </p>
             <div className="buttons">
-              <button className="services">Our Services</button>
-              <button className="contacts">Contact Us</button>
+              <button
+                className="services"
+                onClick={() => {
+                  actives("services");
+                }}
+              >
+                Our Services
+              </button>
+              <button
+                className="contacts"
+                onClick={() => {
+                  actives("contact");
+                }}
+              >
+                Contact Us
+              </button>
+              <span>
+              <IoCall className="icon" /> +63 2 247 2854
+            </span>
             </div>
+           
           </div>
         </div>
+        <span className="sns">
+          <div className="line"></div>
+          <IoLogoFacebook className="icon" />
+          <IoLogoLinkedin className="icon" />
+          <CiMail className="icon" />
+          <IoLogoInstagram className="icon" />
+          <div className="line"></div>
+        </span>
         <div className="right">
+          <div className="circle"></div>
           <div className="swiperCon">
             <Swiper
               spaceBetween={5}
@@ -117,22 +155,43 @@ const MainContents = () => {
 };
 const Con = styled.div`
   color: #fff;
+  & span.sns {
+    position: absolute;
+    margin-top: 30vh;
+    float: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    & .icon{
+      margin: .5rem 1.5rem;
+    }
+    & .line{
+      height: 3rem;
+      width: 1px;
+      background-color: #d7d7d7;
+      margin: auto;
+    }
+  }
   & .wrap {
     width: 100%;
     height: 90vh;
+    max-height: 800px;
     display: flex;
     // background-color: #95ffff54;
+
     & .left {
-      width: 60%;
+      width: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
       & .header {
-        width: 60%;
+        width: 70%;
         display: flex;
         justify-content: center;
         flex-direction: column;
+        margin-top: -3rem;
         & h2 {
           font-size: 2.5rem;
           margin: 0;
@@ -143,9 +202,22 @@ const Con = styled.div`
           color: #75bbff;
         }
         & p {
-          text-transform: uppercase;
+          //text-transform: uppercase;
+          color: #e3e3e3;
+          margin-top: 3rem;
+        }
+        & span {
+
+          font-size: 25px;
+          margin-top: 8rem;
+          white-space: nowrap;
+          color: #d8d8d8;
+          & .icon {
+            margin-right: 0.5rem;
+          }
         }
         & .buttons {
+          margin-top: 3rem;
           & button {
             border: none;
             border-radius: 20px;
@@ -155,12 +227,11 @@ const Con = styled.div`
             font-weight: 600;
             cursor: pointer;
             &.services {
-              color: #fff;
-              background-color: #24753b;
+              color: #24753b;
+              background-color: #ffe9e9;
               padding: 11px 40px;
-              &:hover{
-              background-color: #144c24;
-
+              &:hover {
+                background-color: #44ff79;
               }
             }
             &.contacts {
@@ -182,6 +253,16 @@ const Con = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      & .circle {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        left: 70%;
+        top: 270px;
+
+        background: #005cb4;
+        border-radius: 368.5px;
+      }
       & .swiperCon {
         position: relative;
         font-family: sans-serif;
@@ -191,6 +272,7 @@ const Con = styled.div`
         //height: 550px;
         justify-content: center;
         align-self: center;
+        right: 4rem;
         top: 2rem;
         & img {
           position: relative;

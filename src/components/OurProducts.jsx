@@ -22,7 +22,7 @@ const OurProducts = () => {
       </div>
       <div className="contents">
         <div className="contentWrap">
-          <div className="productPrevCon">
+          {/* <div className="productPrevCon">
             <div className="imgWrap">
               <img src={products[0].image} alt="" />
             </div>{" "}
@@ -35,7 +35,19 @@ const OurProducts = () => {
                 <h1>₱{products[0].price}.00</h1>
               </div>
             </div>
+          </div> */}
+          <div className="previewCon">
+          <div className="description">
+          <div className="wrap">
+          <h1>{products[0].name}</h1>
+            <h3> We provide school supplies</h3>
+            <p>{products[0].description}</p>
           </div>
+          </div>
+          <div className="imageWrap">
+            <img src={products[0].image} alt="" />
+          </div>
+        </div>
           <div className="prodSlider">
             <Swiper
               modules={[Grid, Pagination]}
@@ -147,6 +159,45 @@ const Con = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    & .previewCon {
+      width: 75%;
+      display: flex;
+      & .description {
+        width: 35%;
+        display: flex;
+       // justify-content: center;
+       // align-items: center;
+         margin: 0rem 3rem;
+       
+        flex-direction: column;
+      & .wrap{
+        margin: 0rem auto;
+        & h1 {
+          color: #24753b;
+        }
+        & h3{
+          color: #5cab72;
+          font-size: 1.5rem;
+          margin-top: -1rem;
+
+        }
+        & p {
+          width: 80%;
+        }
+      }
+      }
+      & .imageWrap {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        height: 400px;
+        width: 400px;
+        background-color: transparent;
+box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
+        border-radius: 100%;
+      }
+    }
     & .contentWrap {
       display: flex;
 
@@ -218,7 +269,7 @@ const Con = styled.div`
         align-items: center;
         flex-direction: column;
         & .mySwiper {
-          width: 45vw;
+          width: 35vw;
           height: 540px;
           & .swiper-wrapper {
             display: flex;
@@ -243,10 +294,11 @@ const Con = styled.div`
           }
           & img {
             cursor: pointer;
-            height: 200px;
-            width: 200px;
+            height: 150px;
+            width: 150px;
             margin: auto;
             position: relative;
+            border-radius: 100%;
             z-index: 20;
             border: 1px solid #ccc;
             object-fit: cover;

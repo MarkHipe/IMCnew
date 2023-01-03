@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import NavCon from "./components/NavCon";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -9,27 +9,57 @@ import img8 from "./assets/image8.png";
 import OurProducts from "./components/OurProducts";
 import MeetOurTeam from "./components/MeetOurTeam";
 import ContactUs from "./components/ContactUs";
+import blob from "./assets/greenBlob.svg";
+import { useIsInViewport } from "./utils/UseInView";
 function App() {
   const [count, setCount] = useState(0);
+  const [active, setactive] = useState("");
+  const home = useRef(null);
+  const about = useRef(null);
+  const products = useRef(null);
+  const services = useRef(null);
+  const contact = useRef(null);
 
+  const homeView = useIsInViewport(home);
+  useEffect(() => {
+    let ref = "";
+    if (active === "") {
+      ref = top;
+    } else if (active === "home") {
+      ref = home;
+    } else if (active === "about") {
+      ref = about;
+    } else if (active === "products") {
+      ref = products;
+    } else if (active === "services") {
+      ref = services;
+    } else if (active === "contact") {
+      ref = contact;
+    }
+    if (ref && ref.current) {
+      const executeScroll = (ref) =>
+        ref.current.scrollIntoView({ behavior: "smooth" });
+      executeScroll(ref);
+      // useMountEffect(executeScroll); // Scroll on mount
+    }
+    //setchange(true);
+    setactive("")
+  }, [active]);
   return (
     <Router>
       <Con className="App">
         <div className="backgroundImg">
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/57ad8de5ff7c50d12ce76b68/1565000509464-XBVYERJXN1LQ851EHYS9/Engage-Architectural-22.jpg?format=1000w"
-            alt=""
-          />
-          <div className="shadow"></div>
+          <img src={blob} alt="" />
+          {/* <div className="shadow"></div> */}
         </div>
-        <div className="Main">
-          <NavCon />
-          <MainContents />
+        <div className="Main" ref={home}>
+          <NavCon active={setactive} />
+          <MainContents actives={setactive} />
         </div>
-        <div className="AboutUs">
+        <div className="AboutUs" ref={about}>
           <AboutUs />
         </div>
-        <div className="OurServices">
+        <div className="OurServices" ref={services}>
           <OurServices />
           <div className="imgBanner">
             <img src={img8} alt="" />
@@ -38,13 +68,13 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="OurProducts">
+        <div className="OurProducts" ref={products}>
           <OurProducts />
         </div>
         <div className="MeetOurTeam">
           <MeetOurTeam />
         </div>
-        <div className="ContactUs">
+        <div className="ContactUs" ref={contact}>
           <ContactUs />
         </div>
       </Con>
@@ -54,18 +84,19 @@ function App() {
 const Con = styled.div`
   display: flex;
   flex-direction: column;
-
   & .backgroundImg {
-    box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
+    // box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
     height: 100vh;
     z-index: 1;
     position: absolute;
+    width: 100%;
 
     & img {
       position: absolute;
-      width: 100vw;
-      max-width: 1800px;
-      height: 100vh;
+      width: 75%;
+      object-fit: fill;
+      //  max-width: 1800px;
+      height: 650px;
       top: 0;
       object-fit: cover;
     }
@@ -81,6 +112,7 @@ const Con = styled.div`
   & .Main {
     height: 100vh;
     width: 100%;
+    max-height: 800px;
     position: relative;
     top: 0;
     z-index: 2;
@@ -103,7 +135,6 @@ const Con = styled.div`
         position: absolute;
         height: 300px;
         object-fit: cover;
-       
       }
       & button {
         background: rgba(90, 185, 117, 0.4);

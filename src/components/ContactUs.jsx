@@ -124,35 +124,44 @@ const Con = styled.div`
   height: 100%;
   padding-bottom: 1rem;
   & .wrapper {
-    width: 80%;
+    width: 100%;
 
     & .cardCon {
       display: flex;
-      background-color: #00a930;
+      background-color: #24753B;
       justify-content: center;
-      border-radius: 20px;
+     // border-radius: 20px;
       height: 600px;
 
       & .card {
-        width: 20%;
+        width: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 600px;
+        height: 100%;
+        position: relative;
+        left: -1rem;
         & .form {
           background-color: #ffff;
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-          border-radius: 20px;
+          //border-radius: 20px;
+          border-top-right-radius: 100%;
+          border-bottom-right-radius: 100%;
           padding: 20px;
-          width: 300px;
-          height: 450px;
-          margin-left: -10rem;
-
+          width: 400px;
+          height:560px;
+         // margin-left: -10rem;
+         display: flex;
+         flex-direction: column;
+          justify-content: center;
           align-items: center;
           & form {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 80%;
+            margin: 1rem;
+          
           }
           & h1{
             color: #393939;
@@ -185,7 +194,7 @@ const Con = styled.div`
                 border: none;
                 padding: 10px 30px;
                 border-radius:20px;
-                background-color: #00a930;
+                background-color: #24753B;
                 color: #fff;
             }
           }
@@ -195,6 +204,7 @@ const Con = styled.div`
         width: 70%;
         & .mapWrapper {
           margin: 1rem auto;
+          margin-right: 2rem;
         }
         & .header {
           & h1 {
