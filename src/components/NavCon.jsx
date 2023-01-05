@@ -11,7 +11,7 @@ const NavCon = ({ active, inView,  }) => {
     const tl = gsap.timeline();
    
 
-    tl.to(".content", { duration: 1, css: { opacity: 1 }} ," +=4");
+    tl.to(".content", { duration: 1, css: { opacity: 1 }} ," +=6");
   }, [])
   
   return (

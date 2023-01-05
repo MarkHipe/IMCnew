@@ -29,7 +29,7 @@ function App() {
   const productsView = useIsInViewport(products);
    useLayoutEffect(() => {
     const tl = gsap.timeline();
-    tl.to(blobWrapper, { duration: 6, css: {scale:1} });
+    tl.to(blobWrapper, { duration: 3, css: {scale:1} },"+=4");
   
 
    }, [])
