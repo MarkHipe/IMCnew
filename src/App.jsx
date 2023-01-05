@@ -30,6 +30,7 @@ function App() {
    useLayoutEffect(() => {
     const tl = gsap.timeline();
     tl.to(blobWrapper, { duration: 3, css: {scale:1} },"+=4");
+    tl.to('.App', { duration: 1, css: {position:'relative'} },"-=1");
   
 
    }, [])
@@ -109,7 +110,8 @@ function App() {
 const Con = styled.div`
   display: flex;
   flex-direction: column;
- 
+  //height: 100vh;
+  position: fixed;
   & .backgroundImg {
     // box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
     height: 100vh;
