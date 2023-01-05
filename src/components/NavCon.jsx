@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from ".././assets/logo.png";
 import gsap from "gsap";
+import { IoCall } from "react-icons/io5";
 
 
 const NavCon = ({ active, inView,  }) => {
@@ -18,7 +19,7 @@ const NavCon = ({ active, inView,  }) => {
     <Con className={inView === false ? "float" : ""}>
       <div className="content">
         <span>
-         {/* <img className="logo" src={logo} alt="" /> */}
+         <img className="logo" src={logo} alt="" />
         </span>
         <div className="nav">
           <Link
@@ -57,6 +58,9 @@ const NavCon = ({ active, inView,  }) => {
           <Link to="" className={nav === "careers" ? "navs active" : "navs"}>
             Careers
           </Link>
+          <span>
+                <IoCall className="icon" /> +63 2 247 2854
+              </span>
         </div>
       </div>
     </Con>
@@ -79,11 +83,20 @@ const Con = styled.div`
     z-index: 17;
     box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.15);
     height: 75px;
+    overflow: hidden;
     // height 50px;
     -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
       both;
     animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-
+    & .logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    margin-left: 2rem;
+    opacity: 1;
+    height: auto;
+   
+  }
     & h1{
       color: #1f1f1f;
       font-weight: 500;
@@ -127,7 +140,9 @@ const Con = styled.div`
     width: 80px;
     border-radius: 100%;
     margin-left: 2rem;
-    margin-right: 10px;
+    opacity: 0;
+    height: 0;
+   
   }
   & h1 {
     font-size: 1.1rem;
@@ -143,6 +158,13 @@ const Con = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    & span{
+      margin-left: 1rem;
+      margin-right: -1rem;
+      font-size: 1.5rem;
+      position: relative;
+      right: -3rem;
+    }
     & .navs {
       display: flex;
       margin: auto 10px;

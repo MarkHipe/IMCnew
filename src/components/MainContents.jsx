@@ -117,9 +117,7 @@ const MainContents = ({ actives }) => {
               >
                 Contact Us
               </button>
-              <span>
-                <IoCall className="icon" /> +63 2 247 2854
-              </span>
+             
             </div>
           </div>
         </div>
@@ -205,7 +203,7 @@ const Con = styled.div`
     }
    
       & img.logos{
-        width: 300px;
+        width: 400px;
         border-radius: 100%;
         transform: translateY(200px);
       }
