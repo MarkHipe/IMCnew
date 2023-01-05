@@ -219,6 +219,25 @@ const Con = styled.div`
         border-bottom-left-radius: 100px;
         border-top-left-radius: 100px;
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+        animation: slide-out 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          @keyframes slide-out {
+            0% {
+              width: 300px;
+            }
+           
+            100% {
+              width: 250px;
+            }
+          }
+          & img {
+            background-color: #fff;
+          }
+          & .head {
+            & h2 {
+              color: #fff;
+              font-weight: 500;
+            }
+          }
         &:hover {
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
           transform: scale(1.01);

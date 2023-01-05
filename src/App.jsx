@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import NavCon from "./components/NavCon";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -11,18 +11,33 @@ import MeetOurTeam from "./components/MeetOurTeam";
 import ContactUs from "./components/ContactUs";
 import blob from "./assets/greenBlob.svg";
 import { useIsInViewport } from "./utils/UseInView";
+import { gsap } from "gsap"
+import { InView } from "react-intersection-observer";
 function App() {
-  const [count, setCount] = useState(0);
-  const [active, setactive] = useState("");
+  const [inview, setinview] = useState(0);
+  const [active, setactive] = useState("home");
+
+  const nav = useRef(null);
   const home = useRef(null);
   const about = useRef(null);
   const products = useRef(null);
   const services = useRef(null);
   const contact = useRef(null);
-
+  let blobWrapper = useRef(null)
   const homeView = useIsInViewport(home);
+  const aboutView = useIsInViewport(about);
+  const productsView = useIsInViewport(products);
+   useLayoutEffect(() => {
+    const tl = gsap.timeline();
+    tl.to(blobWrapper, { duration: 6, css: {scale:1} });
+  
+
+   }, [])
+   
+
   useEffect(() => {
     let ref = "";
+   let inview=ref.current;
     if (active === "") {
       ref = top;
     } else if (active === "home") {
@@ -40,20 +55,30 @@ function App() {
       const executeScroll = (ref) =>
         ref.current.scrollIntoView({ behavior: "smooth" });
       executeScroll(ref);
+      setactive(inview)
       // useMountEffect(executeScroll); // Scroll on mount
     }
     //setchange(true);
-    setactive("")
+   // setactive("");
   }, [active]);
+
+
   return (
     <Router>
       <Con className="App">
         <div className="backgroundImg">
-          <img src={blob} alt="" />
+          <img src={blob} alt="" ref={(el) => (blobWrapper = el)} />
           {/* <div className="shadow"></div> */}
         </div>
         <div className="Main" ref={home}>
-          <NavCon active={setactive} />
+        <InView onChange={setinview}>
+          <div  
+          
+            ref={nav}
+            >
+            <NavCon active={setactive} currActive={active} inView={inview}/>
+          </div>
+          </InView >
           <MainContents actives={setactive} />
         </div>
         <div className="AboutUs" ref={about}>
@@ -84,6 +109,7 @@ function App() {
 const Con = styled.div`
   display: flex;
   flex-direction: column;
+ 
   & .backgroundImg {
     // box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
     height: 100vh;
@@ -99,6 +125,7 @@ const Con = styled.div`
       height: 650px;
       top: 0;
       object-fit: cover;
+      transform: scale(10);
     }
     & .shadow {
       position: absolute;
@@ -116,6 +143,7 @@ const Con = styled.div`
     position: relative;
     top: 0;
     z-index: 2;
+    //opacity: 0;
   }
   & .AboutUs {
     // height: 100vh;

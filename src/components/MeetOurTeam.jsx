@@ -95,6 +95,8 @@ const Con = styled.div`
   width: 100%;
   height: 1400px;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
   & .heading {
     font-weight: 600;
     font-size: 20px;

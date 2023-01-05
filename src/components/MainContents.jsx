@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -20,6 +20,9 @@ import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import gsap from "gsap";
+import logo from ".././assets/logo.png";
+
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
 
@@ -58,13 +61,41 @@ const member = [
 
 const MainContents = ({ actives }) => {
   const [active, setactive] = useState(0);
+
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+    tl.to(".logos", { duration: 1, css: { y: 0, width:"100px" } }, "+=1");
+
+    tl.to(".first-text", { duration: 1, css: { opacity: 1 } });
+
+    tl.to(".second-text", { duration: 1, css: { opacity: 1, y:0, left:"20px" } });
+    tl.to(".second-text", { duration: 0.5, css: { opacity: 0 } },"+=1");
+    tl.to(".first-text", { duration: .5, css: { opacity: 0 } },"-=2");
+
+    tl.to(".logos", { duration: 1, css: {x:"-35vw",y:-120} },"-=1" );
+    //tl.to(".logos", { duration: 1, css: {y:-120} }, );
+
+    tl.to(".wrap", { duration: 1, css: { y: 0 } });
+    tl.to(".swiperCon", { duration: 1, css: { x: 0 } }, "-=1");
+
+  }, []);
+
   return (
     <Con>
+      <div className="intro">
+     
+          <img className="logos" src={logo} alt="" /> 
+       
+       <div className="introText">
+       <h2 className="first-text">Need It?</h2>
+        <h1 className="second-text">WE HAVE IT!</h1>
+       </div>
+      </div>
       <div className="wrap">
         <div className="left">
           <div className="header">
             <h2>Need It?</h2>
-            <h1>WE HAVE IT.</h1>
+            <h1>WE HAVE IT!</h1>
             <p>
               We supply different products And equipment for schools, hospitals,
               offices, casinos
@@ -154,6 +185,42 @@ const MainContents = ({ actives }) => {
 };
 const Con = styled.div`
   color: #fff;
+  & .intro {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -6rem;
+    flex-direction: column;
+    & .introText{
+      display: inline-flex;
+    }
+    & h1,
+    h2 {
+      font-size: 6rem;
+      letter-spacing: 4px;
+      opacity: 1;
+    }
+   
+      & img.logos{
+        width: 300px;
+        border-radius: 100%;
+        transform: translateY(200px);
+      }
+    
+    & h3{
+      font-size: 3rem;
+    }
+    & .first-text {
+      opacity: 0;
+    }
+    & .second-text {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+  }
   & span.sns {
     position: absolute;
     margin-top: 30vh;
@@ -177,6 +244,7 @@ const Con = styled.div`
     max-height: 800px;
     display: flex;
     // background-color: #95ffff54;
+    transform: translateY(1000px);
 
     & .left {
       width: 80%;
@@ -195,6 +263,7 @@ const Con = styled.div`
           font-size: 2.5rem;
           margin: 0;
         }
+
         & h1 {
           font-size: 3.5rem;
           margin: 0 3rem;
@@ -267,6 +336,7 @@ const Con = styled.div`
         text-align: center;
         margin: auto;
         width: 80%;
+        transform: translateX(1000px);
         //height: 550px;
         justify-content: center;
         align-self: center;

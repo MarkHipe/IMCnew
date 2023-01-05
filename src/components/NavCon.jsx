@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from ".././assets/logo.png";
+import gsap from "gsap";
 
-const NavCon = ({ active }) => {
+
+const NavCon = ({ active, inView,  }) => {
   const [nav, setnav] = useState("home");
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+   
+
+    tl.to(".content", { duration: 1, css: { opacity: 1 }} ," +=4");
+  }, [])
+  
   return (
-    <Con>
+    <Con className={inView === false ? "float" : ""}>
       <div className="content">
         <span>
-          <img className="logo" src={logo} alt="" /> <h1>8MGM Trading Inc.</h1>
+         {/* <img className="logo" src={logo} alt="" /> */}
         </span>
         <div className="nav">
           <Link
@@ -17,6 +26,7 @@ const NavCon = ({ active }) => {
             className={nav === "home" ? "navs active" : "navs"}
             onClick={() => {
               active("home");
+              setnav("home");
             }}
           >
             Home
@@ -26,6 +36,7 @@ const NavCon = ({ active }) => {
             className={nav === "about" ? "navs active" : "navs"}
             onClick={() => {
               active("about");
+              setnav("about");
             }}
           >
             About Us
@@ -35,6 +46,7 @@ const NavCon = ({ active }) => {
             className={nav === "products" ? "navs active" : "navs"}
             onClick={() => {
               active("products");
+              setnav("products");
             }}
           >
             Products
@@ -55,6 +67,50 @@ const Con = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  &.float {
+    position: fixed;
+    top: -2rem;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding-top: 1rem;
+    z-index: 17;
+    box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.15);
+    height: 75px;
+    // height 50px;
+    -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+    & h1{
+      color: #1f1f1f;
+      font-weight: 500;
+    }
+    @-webkit-keyframes slide-in-top {
+      0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slide-in-top {
+      0% {
+        -webkit-transform: translateY(-1000px);
+        transform: translateY(-1000px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
   & .content {
     position: relative;
     width: 80%;
@@ -62,10 +118,11 @@ const Con = styled.div`
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0;
   }
   & .logo {
-    height: 40px;
-    width: 40px;
+    height: 80px;
+    width: 80px;
     border-radius: 100%;
     margin-left: 2rem;
     margin-right: 10px;
@@ -98,7 +155,7 @@ const Con = styled.div`
       &:hover {
         color: #24753b;
         //font-weight: bold;
-       // border-bottom: 3px solid #24753b;
+        // border-bottom: 3px solid #24753b;
       }
     }
     // margin-right: 2.5rem;

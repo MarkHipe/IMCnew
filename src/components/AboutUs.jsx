@@ -9,7 +9,7 @@ const AboutUs = () => {
   const mission = useRef(null);
   const mission2 = useRef(null);
   const introView = useIsInViewport(intro);
-  console.log(introView);
+ // console.log(introView);
   const missionView = useIsInViewport(mission);
   const missionView2 = useIsInViewport(mission2);
 
@@ -22,6 +22,7 @@ const AboutUs = () => {
         >
           <span>
             <h1>ABOUT US</h1>
+            
           </span>
           <div className="text">
             <p>
@@ -295,21 +296,19 @@ const Con = styled.div`
           border-radius: 100%;
           opacity: 0;
           &.visible {
-            animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
               both;
-            @keyframes slide-in-right {
+            @keyframes slide-up {
               0% {
-                transform: scale(0.9);
+                transform: translateY(800px);
+          opacity: 1;
 
-                opacity: 0;
               }
-              50% {
-                transform: scale(0.85);
-                opacity: 0.5;
-              }
+            
               100% {
-                transform: scale(1);
-                opacity: 1;
+                transform:translateY(0);
+          opacity: 1;
+
               }
             }
           }
