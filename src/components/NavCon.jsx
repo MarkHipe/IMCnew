@@ -67,6 +67,8 @@ const Con = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 30;
   &.float {
     position: fixed;
     top: -2rem;
