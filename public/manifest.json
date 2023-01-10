@@ -1,16 +1,40 @@
 {
-    "name": "8MGM",
-    "icons": [
+  "name": "8MGM",
+  "icons": [
     {
-    "src": "https://8mgmtrading.netlify.app/assets/logo.303b735e.png",
-    "type": "image/png",
-    "sizes": "1024x1024",
-    "purpose": "any maskable"
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo384.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
-    ],
-    "start_url": ".",
-    "short_name": "8MGM",
-    "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
-    }
+  ],
+  "start_url": "/",
+  "short_name": "8MGM",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
