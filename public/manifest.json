@@ -2,34 +2,35 @@
   "name": "8MGM",
   "icons": [
     {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "1024x1024",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "logo192.png",
+      "src": "maskable.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
       "src": "logo256.png",
       "type": "image/png",
-      "sizes": "256x256",
-      "purpose": "any maskable"
+      "sizes": "256x256"
     },
     {
       "src": "logo384.png",
       "type": "image/png",
-      "sizes": "384x384",
-      "purpose": "any maskable"
+      "sizes": "384x384"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
