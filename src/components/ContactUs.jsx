@@ -17,7 +17,7 @@ const contact = [
   },
   {
     name: "mail",
-    icon: <CiMail />,
+    icon: <CiMail />, 
     label: "info@8mgmtrading.com.ph",
   },
   {
