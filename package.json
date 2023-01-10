@@ -17,6 +17,7 @@
     "react-router-dom": "^6.4.4",
     "styled-components": "^5.3.6",
     "swiper": "^8.4.5",
+    "vite-plugin-pwa": "^0.14.1",
     "workbox-background-sync": "^6.5.4",
     "workbox-broadcast-update": "^6.5.4",
     "workbox-cacheable-response": "^6.5.4",
