@@ -6,6 +6,8 @@ import emp3 from "../assets/emp3.png";
 import emp4 from "../assets/emp4.png";
 import emp5 from "../assets/emp5.png";
 import emp6 from "../assets/emp6.png";
+import { gsap } from "gsap";
+
 const MeetOurTeam = () => {
   return (
     <Con>
@@ -15,11 +17,11 @@ const MeetOurTeam = () => {
         <span className="text2">MEET OUR TEAM</span>
       </div>
       <div className="circle"></div>
-      <div className="line one"></div>
-      <div className="line two"></div>
-      <div className="line three"></div>
-      <div className="line four"></div>
-      <div className="line five"></div>
+      <div className="line one first"></div>
+      <div className="line two second"></div>
+      <div className="line three third"></div>
+      <div className="line four fourth"></div>
+      <div className="line five fifth"></div>
       <div className="contents">
         <div className="wrapper">
           <div className="left">
@@ -140,6 +142,32 @@ const Con = styled.div`
     flex-direction: column;
     justify-content: center;
   //  align-items: center;
+  animation: zoom-out 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @keyframes zoom-out {
+          0% {
+            transform: scale(1.15);
+          }
+         
+          100% {
+            transform: scale(1);
+          }
+        }
+        &:hover {
+          animation: zoom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @keyframes zoom {
+          0% {
+            transform: scale(1);
+          }
+          60%{
+            transform: scale(1.18);
+
+          }
+          100% {
+            transform: scale(1.15);
+          }
+        }
+          
+        }
  
   }
   & .line{
@@ -153,6 +181,7 @@ const Con = styled.div`
     &.one{
       transform: rotate(8deg);
       margin-top: -500px;
+      opacity: 0;
     }  
     &.two{
       transform: rotate(-16deg);

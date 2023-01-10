@@ -1,0 +1,16 @@
+{
+    "name": "8MGM",
+    "icons": [
+    {
+    "src": "https://8mgmtrading.netlify.app/assets/logo.303b735e.png",
+    "type": "image/png",
+    "sizes": "1024x1024",
+    "purpose": "any maskable"
+    }
+    ],
+    "start_url": ".",
+    "short_name": "8MGM",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+    }

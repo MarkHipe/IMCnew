@@ -11,7 +11,7 @@ import MeetOurTeam from "./components/MeetOurTeam";
 import ContactUs from "./components/ContactUs";
 import blob from "./assets/greenBlob.svg";
 import { useIsInViewport } from "./utils/UseInView";
-import { gsap } from "gsap"
+import { gsap } from "gsap";
 import { InView } from "react-intersection-observer";
 function App() {
   const [inview, setinview] = useState(0);
@@ -23,22 +23,19 @@ function App() {
   const products = useRef(null);
   const services = useRef(null);
   const contact = useRef(null);
-  let blobWrapper = useRef(null)
+  let blobWrapper = useRef(null);
   const homeView = useIsInViewport(home);
   const aboutView = useIsInViewport(about);
   const productsView = useIsInViewport(products);
-   useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline();
-    tl.to(blobWrapper, { duration: 3, css: {scale:1} },"+=4");
-    tl.to('.App', { duration: 1, css: {position:'relative'} },"-=1");
-  
-
-   }, [])
-   
+    tl.to(blobWrapper, { duration: 3,  ease: "power1.inOut", css: { scale: 1 } }, "+=4");
+    tl.to(".App", { duration: 1, css: { position: "relative" } }, "-=1");
+  }, []);
 
   useEffect(() => {
     let ref = "";
-   let inview=ref.current;
+    let inview = ref.current;
     if (active === "") {
       ref = top;
     } else if (active === "home") {
@@ -56,13 +53,12 @@ function App() {
       const executeScroll = (ref) =>
         ref.current.scrollIntoView({ behavior: "smooth" });
       executeScroll(ref);
-      setactive(inview)
+      setactive(inview);
       // useMountEffect(executeScroll); // Scroll on mount
     }
     //setchange(true);
-   // setactive("");
+    // setactive("");
   }, [active]);
-
 
   return (
     <Router>
@@ -72,14 +68,11 @@ function App() {
           {/* <div className="shadow"></div> */}
         </div>
         <div className="Main" ref={home}>
-        <InView onChange={setinview}>
-          <div  
-          
-            ref={nav}
-            >
-            <NavCon active={setactive} currActive={active} inView={inview}/>
-          </div>
-          </InView >
+          <InView onChange={setinview}>
+            <div ref={nav}>
+              <NavCon active={setactive} currActive={active} inView={inview} />
+            </div>
+          </InView>
           <MainContents actives={setactive} />
         </div>
         <div className="AboutUs" ref={about}>
@@ -90,7 +83,7 @@ function App() {
           <div className="imgBanner">
             <img src={img8} alt="" />
             <div className="button">
-              <button>Contact Us</button>
+              {/* <button>Contact Us</button> */}
             </div>
           </div>
         </div>
@@ -112,13 +105,15 @@ const Con = styled.div`
   flex-direction: column;
   //height: 100vh;
   position: fixed;
+  max-width: 1800px;
+  overflow: hidden;
   & .backgroundImg {
     // box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
     height: 100vh;
     z-index: 1;
     position: absolute;
     width: 100%;
-
+    max-width: 1800px;
     & img {
       position: absolute;
       width: 75%;
@@ -128,6 +123,8 @@ const Con = styled.div`
       top: 0;
       object-fit: cover;
       transform: scale(10);
+      max-width: 1800px;
+      overflow: hidden;
     }
     & .shadow {
       position: absolute;
@@ -160,16 +157,45 @@ const Con = styled.div`
       margin-top: 2rem;
       height: 300px;
       justify-content: center;
+      overflow: hidden;
       & img {
         width: 100%;
-        position: absolute;
+       // position: absolute;
         height: 300px;
         object-fit: cover;
+        //cursor: pointer;
+        animation: zoom-out 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @keyframes zoom-out {
+          0% {
+            transform: scale(1.15);
+          }
+         
+          100% {
+            transform: scale(1);
+          }
+        }
+        &:hover {
+          animation: zoom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @keyframes zoom {
+          0% {
+            transform: scale(1);
+          }
+          60%{
+            transform: scale(1.18);
+
+          }
+          100% {
+            transform: scale(1.15);
+          }
+        }
+          
+        }
       }
       & button {
         background: rgba(90, 185, 117, 0.4);
         border: 3px solid #24753b;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        position: absolute;
         border-radius: 5px;
         padding: 10px 30px;
         position: relative;

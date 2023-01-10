@@ -11,6 +11,8 @@ const AboutUs = () => {
   const introView = useIsInViewport(intro);
  // console.log(introView);
   const missionView = useIsInViewport(mission);
+ 
+  
   const missionView2 = useIsInViewport(mission2);
 
   return (

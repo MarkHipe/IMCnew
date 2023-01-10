@@ -164,6 +164,7 @@ const Con = styled.div`
       font-size: 1.5rem;
       position: relative;
       right: -3rem;
+      color: #484848;
     }
     & .navs {
       display: flex;

@@ -22,7 +22,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import gsap from "gsap";
 import logo from ".././assets/logo.png";
-
+//import { ScrollSmoother } from "gsap/all";
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
 
@@ -58,40 +58,82 @@ const member = [
       "http://images.summitmedia-digital.com/preview/images/2021/03/05/most-expensive-skincare-nm.jpg",
   },
 ];
-
+//gsap.registerPlugin( ScrollSmoother);
 const MainContents = ({ actives }) => {
   const [active, setactive] = useState(0);
-
+  // gsap.registerPlugin( ScrollSmoother);
+  // const smoother = ScrollSmoother.create({
+  //   smooth: 2,   // seconds it takes to "catch up" to native scroll position
+  //   effects: true, // look for data-speed and data-lag attributes on elements and animate accordingly
+  //   smoothTouch: 0.1,
+  // });
+  
   useLayoutEffect(() => {
+  //  ScrollSmoother.create();
     const tl = gsap.timeline();
-    tl.to(".logos", { duration: 1, css: { y: 0, width:"100px" } }, "+=1");
+    tl.to(
+      ".logos",
+      { duration: 1, ease: "power1.inOut", css: { y: 170, width: "100px" } },
+      "+=1"
+    );
 
-    tl.to(".first-text", { duration: 1, css: { opacity: 1 } });
+    tl.to(".first-text", {
+      duration: 1,
+      ease: "power1.inOut",
+      css: { opacity: 1 },
+    });
 
-    tl.to(".second-text", { duration: 1, css: { opacity: 1, y:0, left:"20px" } });
-    tl.to(".second-text", { duration: 0.5, css: { opacity: 0 } },"+=1");
-    tl.to(".first-text", { duration: .5, css: { opacity: 0 } },"-=2");
+    tl.to(".second-text", {
+      duration: 1,
+      ease: "power1.inOut",
+      css: { opacity: 1, y: 0, left: "20px" },
+    });
+    tl.to(
+      ".second-text",
+      { duration: 0.5, ease: "power1.inOut", css: { opacity: 0 } },
+      "+=1"
+    );
+    tl.to(
+      ".first-text",
+      { duration: 0.5, ease: "power1.inOut", css: { opacity: 0 } },
+      "-=2"
+    );
 
-    tl.to(".logos", { duration: 1, css: {x:"-35vw",y:-120} },"-=1" );
+    tl.to(
+      ".logos",
+      {
+        duration: 1,
+        ease: "power1.inOut",
+        css: { x: "80", y: -20,
+        position:"absolute", margin:"auto", display: "flex", alignSelf:"flex-start" },
+      },
+    
+    );
     //tl.to(".logos", { duration: 1, css: {y:-120} }, );
 
-    tl.to(".wrap", { duration: 1, css: { y: 0 } });
-    tl.to(".swiperCon", { duration: 1, css: { x: 0 } }, "-=1");
-
+    tl.to(".wrap", {
+      duration: 1,
+      ease: "power1.inOut",
+      css: { y: 0, visibility: "visible" },
+    },'-=1');
+    tl.to(
+      ".swiperCon",
+      { duration: 1, ease: "power1.inOut", css: { x: 0 } },
+      "-=1"
+    );
   }, []);
 
   return (
-    <Con>
+    <Con id="smooth-wrapper">
+      <img className="logos" src={logo} alt="" />
+
       <div className="intro">
-     
-          <img className="logos" src={logo} alt="" /> 
-       
-       <div className="introText">
-       <h2 className="first-text">Need It?</h2>
-        <h1 className="second-text">WE HAVE IT!</h1>
-       </div>
+        <div className="introText">
+          <h2 className="first-text">Need It?</h2>
+          <h1 className="second-text">WE HAVE IT!</h1>
+        </div>
       </div>
-      <div className="wrap">
+      <div className="wrap" id="smooth-content">
         <div className="left">
           <div className="header">
             <h2>Need It?</h2>
@@ -117,7 +159,6 @@ const MainContents = ({ actives }) => {
               >
                 Contact Us
               </button>
-             
             </div>
           </div>
         </div>
@@ -183,16 +224,29 @@ const MainContents = ({ actives }) => {
 };
 const Con = styled.div`
   color: #fff;
+
+  width: 100%;
+  & img.logos {
+    width: 400px;
+    border-radius: 100%;
+    transform: translateY(100px);
+    margin: auto;
+    display: flex;
+    align-self: center;
+    position: relative;
+  }
+
   & .intro {
     width: 100%;
     height: 100vh;
+    max-width: 1800px;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -6rem;
     flex-direction: column;
-    & .introText{
+    & .introText {
       display: inline-flex;
     }
     & h1,
@@ -201,14 +255,8 @@ const Con = styled.div`
       letter-spacing: 4px;
       opacity: 1;
     }
-   
-      & img.logos{
-        width: 400px;
-        border-radius: 100%;
-        transform: translateY(200px);
-      }
-    
-    & h3{
+
+    & h3 {
       font-size: 3rem;
     }
     & .first-text {
@@ -238,12 +286,12 @@ const Con = styled.div`
   }
   & .wrap {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     max-height: 800px;
     display: flex;
     // background-color: #95ffff54;
     transform: translateY(1000px);
-
+    visibility: hidden;
     & .left {
       width: 80%;
       display: flex;
