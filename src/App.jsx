@@ -29,7 +29,11 @@ function App() {
   const productsView = useIsInViewport(products);
   useLayoutEffect(() => {
     const tl = gsap.timeline();
-    tl.to(blobWrapper, { duration: 3,  ease: "power1.inOut", css: { scale: 1 } }, "+=4");
+    tl.to(
+      blobWrapper,
+      { duration: 3, ease: "power1.inOut", css: { scale: 1 } },
+      "+=4"
+    );
     tl.to(".App", { duration: 1, css: { position: "relative" } }, "-=1");
   }, []);
 
@@ -82,9 +86,7 @@ function App() {
           <OurServices />
           <div className="imgBanner">
             <img src={img8} alt="" />
-            <div className="button">
-              {/* <button>Contact Us</button> */}
-            </div>
+            <div className="button">{/* <button>Contact Us</button> */}</div>
           </div>
         </div>
         <div className="OurProducts" ref={products}>
@@ -97,6 +99,27 @@ function App() {
           <ContactUs />
         </div>
       </Con>
+      <style jsx>{`
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        nav,
+        span,
+        div {
+          font-family: "Roboto", sans-serif !important;
+        }
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          top: 0;
+          left: 0;
+        }
+      `}</style>
     </Router>
   );
 }
@@ -107,6 +130,7 @@ const Con = styled.div`
   position: fixed;
   max-width: 1800px;
   overflow: hidden;
+  width: 100%;
   & .backgroundImg {
     // box-shadow: inset 0px 0px 100px 75px rgba(0, 0, 0, 0.65);
     height: 100vh;
@@ -160,7 +184,7 @@ const Con = styled.div`
       overflow: hidden;
       & img {
         width: 100%;
-       // position: absolute;
+        // position: absolute;
         height: 300px;
         object-fit: cover;
         //cursor: pointer;
@@ -169,26 +193,24 @@ const Con = styled.div`
           0% {
             transform: scale(1.15);
           }
-         
+
           100% {
             transform: scale(1);
           }
         }
         &:hover {
           animation: zoom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        @keyframes zoom {
-          0% {
-            transform: scale(1);
+          @keyframes zoom {
+            0% {
+              transform: scale(1);
+            }
+            60% {
+              transform: scale(1.18);
+            }
+            100% {
+              transform: scale(1.15);
+            }
           }
-          60%{
-            transform: scale(1.18);
-
-          }
-          100% {
-            transform: scale(1.15);
-          }
-        }
-          
         }
       }
       & button {
