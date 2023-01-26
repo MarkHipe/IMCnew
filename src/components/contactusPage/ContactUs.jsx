@@ -10,7 +10,7 @@ const ContactUs = () => {
   return (
     <Con>
       <div className="iso">
-        <AiFillFileText className="icon"/>
+        <AiFillFileText className="icon" />
         <div className="details">
           <h6>CERTIFIED COMPANY</h6>
           <h6>ISO 9001-2015</h6>
@@ -86,6 +86,15 @@ const ContactUs = () => {
             </form>
           </div>
         </div>
+        <iframe
+          style={{ width: "100%", height: "300px" }}
+          class="gmap_iframe"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.5667246310827!2d121.00529723467848!3d14.566752198992006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c99e72a880a9%3A0x27268a38417e5bd4!2sThe%20Mondrian!5e0!3m2!1sen!2sph!4v1674711180415!5m2!1sen!2sph"
+        ></iframe>
       </div>
     </Con>
   );
@@ -97,12 +106,12 @@ const Con = styled.div`
     height: 30px;
     display: flex;
     margin-left: 3rem;
-    & .icon{
-        margin-right: 1rem;
+    & .icon {
+      margin-right: 1rem;
     }
-    & h6{
-        margin: 0 ;
-        color: #6b6b6b;
+    & h6 {
+      margin: 0;
+      color: #6b6b6b;
     }
   }
   & .wrap {
