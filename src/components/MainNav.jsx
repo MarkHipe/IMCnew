@@ -5,14 +5,13 @@ import logo from ".././assets/logo.png";
 import gsap from "gsap";
 import { IoCall } from "react-icons/io5";
 import IMC from "../assets/IMC.png";
-import { AiOutlineClose } from "react-icons/ai";
-import { FaBars } from "react-icons/fa";
 
-const NavCon = ({ active, inView, mobilepop,currActive }) => {
+const MainNav = ({currActive, active, inView, mobilepop }) => {
   const [nav, setnav] = useState("home");
+  // const [active, setactive] = useState()
   const navigate = useNavigate();
   return (
-    <Con className={inView === false ? "float" : ""}>
+    <Con className={mobilepop === "close" ? "float" : ""}>
       <div className={mobilepop === "close" ? "content pop" : "content"}>
         <span>
           <img className="logo" src={IMC} alt="" />
@@ -88,25 +87,25 @@ const NavCon = ({ active, inView, mobilepop,currActive }) => {
   );
 };
 const Con = styled.div`
-  margin-top: 1.5rem;
+  //margin-top: 1.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 30;
-  display: none;
+  z-index: 19;
+
   & nav {
     cursor: pointer;
   }
+
   &.float {
     position: fixed;
-    display: flex;
-    top: -1.5rem;
+    top: -2rem;
     left: 0;
     right: 0;
     background-color: #fff;
-    // padding-top: 1rem;
-    z-index: 20;
+    padding-top: 1rem;
+    z-index: 17;
     box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.15);
     height: 75px;
     overflow: hidden;
@@ -154,11 +153,13 @@ const Con = styled.div`
       margin-left: 2rem;
       opacity: 1;
       height: auto;
+      @media (max-width: 992px) {
+        margin-left: 0;
+      }
     }
     & h1 {
-      color: #d3a0a0;
+      color: #1f1f1f;
       font-weight: 500;
-      font-size: 1rem;
     }
     @-webkit-keyframes slide-in-top {
       0% {
@@ -224,8 +225,8 @@ const Con = styled.div`
       font-size: 1.5rem;
       position: relative;
       right: -3rem;
+      color: #484848;
       white-space: nowrap;
-      color: #555555;
       @media (max-width: 992px) {
         display: none;
       }
@@ -234,12 +235,11 @@ const Con = styled.div`
       display: flex;
       margin: auto 10px;
       color: #1f1f1f;
-      font-size: 0.8rem;
       text-decoration: none;
       text-transform: uppercase;
+      font-size: 0.8rem;
       border-bottom: 3px solid transparent;
       white-space: nowrap;
-
       &.active {
         color: #001027;
         font-weight: bold;
@@ -256,4 +256,4 @@ const Con = styled.div`
     // margin-right: 2.5rem;
   }
 `;
-export default NavCon;
+export default MainNav;

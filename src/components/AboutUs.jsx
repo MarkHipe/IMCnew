@@ -17,6 +17,13 @@ const AboutUs = () => {
 
   return (
     <Con>
+       <div className="iso">
+        <AiFillFileText className="icon"/>
+        <div className="details">
+          <h6>CERTIFIED COMPANY</h6>
+          <h6>ISO 9001-2015</h6>
+        </div>
+      </div>
       <div className="wrap">
         <div
           className={introView === true ? " about visible " : "about"}
@@ -145,6 +152,19 @@ const Con = styled.div`
   margin: 3rem auto;
   height: 100%;
   // padding: 1rem;
+  padding-top: 0;
+  & .iso {
+    height: 30px;
+    display: flex;
+    margin-left: 3rem;
+    & .icon{
+        margin-right: 1rem;
+    }
+    & h6{
+        margin: 0 ;
+        color: #6b6b6b;
+    }
+  }
   & .wrap {
     width: 100%;
     & .about {
