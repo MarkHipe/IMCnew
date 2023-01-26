@@ -680,12 +680,12 @@ const Con = styled.div`
       width: 80%;
     }
     & .left {
-      width: 600px;
-      margin: 2rem;
+      max-width: 600px;
+      /* margin: 2rem; */
 
       & .wrap {
         padding: 1rem;
-        width: 600px;
+        max-width: 600px;
         // margin-left: auto;
         // margin-right: 3rem;
         & h1 {
